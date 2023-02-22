@@ -1,17 +1,19 @@
 //
-//  MemorizeGameApp.swift
-//  MemorizeGame
+//  Memorize_CS193P_App.swift
+//  Memorize(CS193P)
 //
-//  Created by Eugene Demenko on 23.02.2023.
+//  Created by Eugene Demenko on 25.01.2023.
 //
 
 import SwiftUI
 
 @main
-struct MemorizeGameApp: App {
+struct Memorize_CS193P_App: App {
+    let game = EmojiMemoryGame()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: game)
         }
     }
 }
