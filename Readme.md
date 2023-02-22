@@ -43,11 +43,13 @@ The goal of this assignment is to continue to recreate the demonstrations given 
 
 9. The score displayed in the interface
 
+This project is built on Xcode 14.2 with use Swift 5.7 and SwiftUI 4
+
+My email: demenkoeugene@icloud.com
+
+
 ![Запис екрана 2023-02-22 о 17 56 19](https://user-images.githubusercontent.com/110675494/220786090-722a1762-f0d4-46dd-93bf-7fdc07dcf529.gif)
 
 
 
-This project is built on Xcode 14.2 with use Swift 5.7 and SwiftUI 4
-
-My email: demenkoeugene@icloud.com
 
