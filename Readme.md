@@ -19,7 +19,8 @@ The goal of this assignment is to recreate the demonstration given in the first 
 Also I also did an Extra credit assignment.
 I made a random number of cards appear each time a theme button is chosen. Always shows at least 4 cards though. I created the randomaizer() function specifically for this purpose
 
-/Users/demenko/Downloads/214946374-84c678df-cdc0-4072-bed4-e48fe8523ab8.png
+<img width="285" alt="214946374-84c678df-cdc0-4072-bed4-e48fe8523ab8" src="https://user-images.githubusercontent.com/110675494/220786122-24170ab5-400c-4cb3-be56-4bde1803be36.png">
+
 
 # MemorizeGame. Assignment II.
 
@@ -42,6 +43,7 @@ The goal of this assignment is to continue to recreate the demonstrations given 
 
 9. The score displayed in the interface
 
+![Запис екрана 2023-02-22 о 17 56 19](https://user-images.githubusercontent.com/110675494/220786090-722a1762-f0d4-46dd-93bf-7fdc07dcf529.gif)
 
 
 
@@ -49,5 +51,3 @@ This project is built on Xcode 14.2 with use Swift 5.7 and SwiftUI 4
 
 My email: demenkoeugene@icloud.com
 
-
-<img width="285" alt="image" src="https://user-images.githubusercontent.com/110675494/214946374-84c678df-cdc0-4072-bed4-e48fe8523ab8.png">
