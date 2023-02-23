@@ -11,13 +11,14 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject{
     
-    
+    //Themes
     private static let vihiclesArray = ["🚗","🚌","🚲","🚄","🚛", "🚜", "🏎", "🚓", "🚑", "🚒", "🚐", "✈️", "🛵","🚇","🚢", "🛥", "🛴", "🚕", "🚙", "🚝", "🚞", "🚤", "⛴", "🛩"]
     private static let animalArray = ["🐶","🐱","🐭","🐹","🐰", "🦊", "🐻", "🐼", "🐻‍❄️", "🐨", "🐯", "🦁", "🐮","🐷","🐽", "🐸", "🐵", "🐔", "🐧", "🐦", "🐤", "🦆", "🦅", "🦉"]
     private static let foodArray = ["🍏","🍎","🍐","🍊","🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍈", "🍒", "🍑","🥭","🍍", "🥥", "🥝", "🍅", "🍆", "🥑", "🥦", "🥬", "🥒", "🌶"]
     private static let activeArray = ["⚽️","🏀","🏈","⚾️","🥎", "🎾", "🏐", "🥏", "🏉", "🎱", "🪀", "🏓", "🏸","🏒","🏑", "🥍", "🏏", "🪃", "🥅", "🪁", "🛝", "🏹", "🎣", "🤿"]
     private static let sportsArray = ["🪂","⛷","🏂", "🏋️‍♀️", "🤼‍♀️", "🤸‍♀️", "⛹️‍♀️", "🤺", "🤾‍♀️", "🏌️‍♀️", "🏇","🧘‍♀️","🏄‍♀️", "🏊", "🤽‍♀️", "🚣‍♀️", "🧗‍♀️", "🚵‍♀️", "🚴‍♀️"]
     private static let faceArray = ["😀","😃","😄", "😁", "😆", "🥹", "😅", "😂", "🤣", "🥲", "☺️","😇","🙂", "🙃", "😉", "😌", "😍", "🥰", "😘"]
+    
     
     private static let themes = [
         Theme(themeName: "Vehicles", themeArray: vihiclesArray, numberCards: generateRandomNumber(), colorCards: Color.blue),
@@ -44,21 +45,11 @@ class EmojiMemoryGame: ObservableObject{
     func setScore() -> String {
         return String(model.score)
     }
-
     
+    //function for View
     func newGame() {
         model = EmojiMemoryGame.createMemoryGame()
         objectWillChange.send()
-    }
-
-    var cards: Array<MemoryGame<String>.Card>{
-        model.cards
-    }
-    
-    //MARK: -Intent(s)
-    
-    func choose(_ card: MemoryGame<String>.Card){
-        model.choose(card)
     }
 
     func setTitle() -> String{
@@ -68,13 +59,23 @@ class EmojiMemoryGame: ObservableObject{
     func setColor() -> Color{
         EmojiMemoryGame.randomCase.colorCards
     }
-    
+    //function for array
     static func generateRandomNumber() -> Int {
         return Int.random(in: 4...10)
     }
     
-
+    //MARK: -Intent(s)
     
+    var cards: Array<MemoryGame<String>.Card>{
+        model.cards
+    }
+    
+    func choose(_ card: MemoryGame<String>.Card){
+        model.choose(card)
+    }
+
+  
+
 }
 
 

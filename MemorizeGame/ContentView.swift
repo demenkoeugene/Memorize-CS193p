@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
-     
+
     
     var body: some View {
        
@@ -60,10 +60,6 @@ struct NewGameButton: View {
       }
   }
   
-
-
-
- 
 
 struct CardView: View{
     let card: MemoryGame<String>.Card

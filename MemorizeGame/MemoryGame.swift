@@ -10,7 +10,7 @@ import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable{
     private(set) var cards: Array<Card>
-    var score: Int = 0
+    var score: Int = 0 //our score
     
     private var indexOfTheOneAndOnlyFaceUpCard: Int?
     
@@ -20,7 +20,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
                 if cards[chosenIndex].content == cards[potentialMatchIndex].content{
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
-                    score+=2
+                    score+=2 //+2 points to the score
                 }else {
                     if cards[potentialMatchIndex].seenBefore || cards[chosenIndex].seenBefore {
                         score -= 1
@@ -73,8 +73,8 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
     
    
 }
-
-
+    
+//Struct for Theme 
 struct Theme<ColorType> {
     var themeName: String
     var themeArray: [String]
