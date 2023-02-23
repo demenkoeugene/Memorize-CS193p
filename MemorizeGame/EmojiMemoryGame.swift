@@ -10,6 +10,8 @@ import SwiftUI
 //ViewModel
 
 class EmojiMemoryGame: ObservableObject{
+    typealias Card = MemoryGame<String>.Card
+    
     
     //Themes
     private static let vihiclesArray = ["🚗","🚌","🚲","🚄","🚛", "🚜", "🏎", "🚓", "🚑", "🚒", "🚐", "✈️", "🛵","🚇","🚢", "🛥", "🛴", "🚕", "🚙", "🚝", "🚞", "🚤", "⛴", "🛩"]
@@ -18,7 +20,6 @@ class EmojiMemoryGame: ObservableObject{
     private static let activeArray = ["⚽️","🏀","🏈","⚾️","🥎", "🎾", "🏐", "🥏", "🏉", "🎱", "🪀", "🏓", "🏸","🏒","🏑", "🥍", "🏏", "🪃", "🥅", "🪁", "🛝", "🏹", "🎣", "🤿"]
     private static let sportsArray = ["🪂","⛷","🏂", "🏋️‍♀️", "🤼‍♀️", "🤸‍♀️", "⛹️‍♀️", "🤺", "🤾‍♀️", "🏌️‍♀️", "🏇","🧘‍♀️","🏄‍♀️", "🏊", "🤽‍♀️", "🚣‍♀️", "🧗‍♀️", "🚵‍♀️", "🚴‍♀️"]
     private static let faceArray = ["😀","😃","😄", "😁", "😆", "🥹", "😅", "😂", "🤣", "🥲", "☺️","😇","🙂", "🙃", "😉", "😌", "😍", "🥰", "😘"]
-    
     
     private static let themes = [
         Theme(themeName: "Vehicles", themeArray: vihiclesArray, numberCards: generateRandomNumber(), colorCards: Color.blue),
@@ -40,7 +41,7 @@ class EmojiMemoryGame: ObservableObject{
     }
 
 
-    @Published private(set) var model: MemoryGame<String> = createMemoryGame()
+    @Published private(set) var model = createMemoryGame()
     
     func setScore() -> String {
         return String(model.score)
@@ -61,16 +62,18 @@ class EmojiMemoryGame: ObservableObject{
     }
     //function for array
     static func generateRandomNumber() -> Int {
-        return Int.random(in: 4...10)
+        return Int.random(in: 4...20)
     }
     
-    //MARK: -Intent(s)
     
-    var cards: Array<MemoryGame<String>.Card>{
+    var cards: Array<Card>{
         model.cards
     }
+    //MARK: -Intent(s)
     
-    func choose(_ card: MemoryGame<String>.Card){
+   
+    
+    func choose(_ card: Card){
         model.choose(card)
     }
 
