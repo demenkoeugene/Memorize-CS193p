@@ -25,26 +25,28 @@ struct EmojiMemoryGameView: View {
                     .fontWeight(.bold)
                     .padding(10)
             }
-     
-            AspectVGrid(items: game.cards, aspectRatio: 2/3)  {card in
-                cardView(for: card)
-            }.padding(10)
-            
-            Spacer()
-            HStack{
+                
+                AspectVGrid(items: game.cards, aspectRatio: 2/3)  {card in
+                    cardView(for: card)
+                }.padding(10)
+                
                 Spacer()
-                NewGameButton(viewModel: game)
-                Spacer()
-            }
+                HStack{
+                    Spacer()
+                    NewGameButton(viewModel: game)
+                    Spacer()
+                }
         }.foregroundColor(game.setColor()).padding(.horizontal)
+    
     }
     @ViewBuilder
     private func cardView(for card: EmojiMemoryGame.Card) -> some View{
         if card.isMatched && !card.isFaceUp{
             Rectangle().opacity(0)
         }else{
-            CardView(card).padding(4).aspectRatio(2/3, contentMode: .fit).onTapGesture {
+            CardView(card,game).padding(4).aspectRatio(2/3, contentMode: .fit).onTapGesture {
                 game.choose(card)
+               
             }
         }
     }
@@ -57,9 +59,13 @@ struct NewGameButton: View {
           Button {
               viewModel.newGame()
           } label: {
-              VStack {
+              VStack() {
                   Text("New Game")
-                      .font(.title2.bold())
+                      .font(.title2.bold()).foregroundColor(viewModel.setColor())
+                      .padding(.horizontal, 50.0).padding(.vertical, 20.0)
+                      .background(Color.white)
+                      .cornerRadius(20)
+                      .shadow(radius: 10)
               }
           }
       }
@@ -68,10 +74,15 @@ struct NewGameButton: View {
 
 struct CardView: View{
     private let card: EmojiMemoryGame.Card
+    var viewmodel: EmojiMemoryGame
+
     
-    init(_ card: EmojiMemoryGame.Card){
+    init(_ card: EmojiMemoryGame.Card,_ viewmodel: EmojiMemoryGame){
         self.card = card
+        self.viewmodel = viewmodel
     }
+    
+   
     
     var body: some View {
         GeometryReader {geometry in
@@ -79,8 +90,11 @@ struct CardView: View{
                 let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
                 if card.isFaceUp{
                     shape.fill().foregroundColor(.white)
-                    shape.stroke(lineWidth: DrawingConstants.lineWidth)
+                    let borderColor: Color = viewmodel.setBorderColor()
+                    shape.stroke(borderColor, lineWidth: DrawingConstants.lineWidth)
                     Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: 270-90)).padding(5).opacity(0.5)
+//                    Diamond().padding(5).opacity(0.5)
+                        
                     Text(card.content).font(font(in: geometry.size)).padding()
                 }else if card.isMatched{
                     shape.opacity(0)

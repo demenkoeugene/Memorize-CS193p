@@ -24,10 +24,10 @@ class EmojiMemoryGame: ObservableObject{
     private static let themes = [
         Theme(themeName: "Vehicles", themeArray: vihiclesArray, numberCards: generateRandomNumber(), colorCards: Color.blue),
         Theme(themeName: "Animal", themeArray: animalArray, numberCards: generateRandomNumber(), colorCards: Color.orange),
-        Theme(themeName: "Food", themeArray: foodArray, numberCards: generateRandomNumber(), colorCards: Color.red),
+        Theme(themeName: "Food", themeArray: foodArray, numberCards: generateRandomNumber(), colorCards: Color.indigo),
         Theme(themeName: "Active", themeArray: activeArray, numberCards: generateRandomNumber(), colorCards: Color.pink),
         Theme(themeName: "Sports", themeArray: sportsArray, numberCards: generateRandomNumber(), colorCards: Color.purple),
-        Theme(themeName: "Face", themeArray: faceArray, numberCards: generateRandomNumber(), colorCards: Color.green)
+        Theme(themeName: "Face", themeArray: faceArray, numberCards: generateRandomNumber(), colorCards: Color.secondary)
     ]
     
     static var randomCase = themes.randomElement()!
@@ -36,18 +36,22 @@ class EmojiMemoryGame: ObservableObject{
         randomCase = themes.randomElement()!
         let shuffledArray = randomCase.themeArray.shuffled()
         return MemoryGame<String>(numberOfPairsOfCards: randomCase.numberCards) { pairIndex in
-            shuffledArray[pairIndex]
+                shuffledArray[pairIndex]
         }
-    }
-
-
+        }
+    
+    
     @Published private(set) var model = createMemoryGame()
     
     func setScore() -> String {
         return String(model.score)
     }
+
+  
+    func setBorderColor() -> Color{
+        return model.isMatched ? Color.green : setColor()
+    }
     
-    //function for View
     func newGame() {
         model = EmojiMemoryGame.createMemoryGame()
         objectWillChange.send()
@@ -62,7 +66,7 @@ class EmojiMemoryGame: ObservableObject{
     }
     //function for array
     static func generateRandomNumber() -> Int {
-        return Int.random(in: 4...20)
+        return Int.random(in: 4...12)
     }
     
     
@@ -77,6 +81,7 @@ class EmojiMemoryGame: ObservableObject{
         model.choose(card)
     }
 
+    
   
 
 }

@@ -11,9 +11,9 @@ struct Pie: Shape {
     var startAngle: Angle
     var endAngle: Angle
     var clockwise: Bool = false
-    
+
     func path(in rect: CGRect) -> Path{
-       
+
         let center = CGPoint(x: rect.midX, y: rect.midY)
         let radius = min(rect.width, rect.height)/2
         let start = CGPoint (
@@ -34,5 +34,28 @@ struct Pie: Shape {
         return p
     }
 }
+
+struct Diamond: Shape {
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let width = min(rect.size.width, rect.size.height)
+        let height = width
+        let midX = rect.midX
+        let midY = rect.midY
+        let x = midX - (width / 2)
+        let y = midY - (height / 2)
+
+        path.move(to: CGPoint(x: midX, y: y))
+        path.addLine(to: CGPoint(x: x, y: midY))
+        path.addLine(to: CGPoint(x: midX, y: y + height))
+        path.addLine(to: CGPoint(x: x + width, y: midY))
+        path.addLine(to: CGPoint(x: midX, y: y))
+        path.closeSubpath()
+
+        return path
+    }
+}
+
 
 
