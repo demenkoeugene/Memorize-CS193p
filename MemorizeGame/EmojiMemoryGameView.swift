@@ -21,8 +21,10 @@ struct EmojiMemoryGameView: View {
                 scoreViewer
             }
                 
+            ZStack(alignment: .bottom){
                 gameBody
                 deckBody
+            }
                 Spacer()
                 HStack{
                     shuffle
@@ -66,6 +68,7 @@ struct EmojiMemoryGameView: View {
            }
            return Animation.easeInOut(duration: CardConstants.dealDuration).delay(delay)
     }
+    
     private func zIndex(of card: EmojiMemoryGame.Card) -> Double{
         -Double(game.cards.firstIndex(where: {$0.id == card.id}) ?? 0)
     }
@@ -75,7 +78,7 @@ struct EmojiMemoryGameView: View {
             if isUndealt(card)||(card.isMatched && !card.isFaceUp){
                 Color.clear
             } else {
-                CardView(card)
+                CardView(card, game)
                     .matchedGeometryEffect(id: card.id, in: dealingNamespace)
                     .padding(4)
                     .transition(AnyTransition.asymmetric(insertion: .identity, removal: .scale))
@@ -92,9 +95,8 @@ struct EmojiMemoryGameView: View {
     var deckBody: some View {
           ZStack {
               ForEach(game.cards.filter(isUndealt)) { card in
-                  CardView(card)
-                      .matchedGeometryEffect(id: card.id, in: dealingNamespace)
-                  .transition(AnyTransition
+                  CardView(card, game)
+                      .matchedGeometryEffect(id: card.id, in: dealingNamespace).transition(AnyTransition
                               .asymmetric(insertion: .opacity, removal: .identity))
               }
           }
@@ -158,33 +160,36 @@ struct EmojiMemoryGameView: View {
 
 struct CardView: View{
     private let card: EmojiMemoryGame.Card
+    @ObservedObject var viewmodel: EmojiMemoryGame
     
     @State private var animatedBonusRemaining = 0.0
     
-    init(_ card: EmojiMemoryGame.Card){
+    init(_ card: EmojiMemoryGame.Card,_ viewmodel: EmojiMemoryGame){
         self.card = card
+        self.viewmodel = viewmodel
     }
    
    
     @ViewBuilder
     var body: some View {
+        let bordColor: Color = viewmodel.setBorderColor()
         
         GeometryReader { geometry in
             ZStack{
                 Group {
                         if card.isConsumingBonusTime {
-                            Pie(startAngle: .degrees(90), endAngle: .degrees(-animatedBonusRemaining*360-90), clockwise: true)
+                            Pie(startAngle: .degrees(0-90), endAngle: .degrees(-animatedBonusRemaining*360-90))
                                               .onAppear {
                                                   animatedBonusRemaining = card.bonusRemaining
                                                   withAnimation(.linear(duration: card.bonusTimeRemaining)) {
                                                       animatedBonusRemaining = 0
                                                   }
                                               }
-                                      } else {
-                                          Pie(startAngle: .degrees(0), endAngle: .degrees(-card.bonusRemaining*360-90), clockwise: true)
+                                    } else {
+                                          Pie(startAngle: .degrees(0-90), endAngle: .degrees(-card.bonusRemaining*360-90))
                                           
-                                      }
-                               }
+                                    }
+                }
                                .padding(5)
                                .opacity(0.6)
                                .transition(.identity)
@@ -195,7 +200,7 @@ struct CardView: View{
                     .repeatForever(autoreverses: false), value: true)
                     .font(Font.system(size: DrawingConstants.fontSize))
                     .scaleEffect(scale (thatFits: geometry.size))
-            }.cardify(isFaceUp: card.isFaceUp)
+            }.cardify(isFaceUp: card.isFaceUp, bordColor: bordColor)
             
         }
     }
@@ -205,9 +210,11 @@ struct CardView: View{
     private func font(in size: CGSize) -> Font{
         Font.system(size: min(size.width, size.height)*DrawingConstants.fontScale)
     }
+    
+    
     private struct DrawingConstants{
         static let fontScale: CGFloat = 0.5
-            static let fontSize: CGFloat = 32
+        static let fontSize: CGFloat = 32
     }
 }
 

@@ -27,7 +27,7 @@ class EmojiMemoryGame: ObservableObject{
         Theme(themeName: "Food", themeArray: foodArray, numberCards: generateRandomNumber(), colorCards: Color.indigo),
         Theme(themeName: "Active", themeArray: activeArray, numberCards: generateRandomNumber(), colorCards: Color.pink),
         Theme(themeName: "Sports", themeArray: sportsArray, numberCards: generateRandomNumber(), colorCards: Color.purple),
-        Theme(themeName: "Face", themeArray: faceArray, numberCards: generateRandomNumber(), colorCards: Color.secondary)
+        Theme(themeName: "Face", themeArray: faceArray, numberCards: generateRandomNumber(), colorCards: Color.teal)
     ]
     
     static var randomCase = themes.randomElement()!
@@ -50,7 +50,7 @@ class EmojiMemoryGame: ObservableObject{
   
    
     func setBorderColor() -> Color{
-        return model.isMatched ? Color.green : setColor()
+        return model.isMatchedCard ? Color.green : setColor()
     }
     
     func newGame() {

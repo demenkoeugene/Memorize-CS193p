@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct Cardify: AnimatableModifier {
-    init(isFaceUp: Bool){
+    let bordColor: Color
+    
+    init(isFaceUp: Bool, bordColor: Color){
         rotation = isFaceUp ? 0 : 180
+        self.bordColor = bordColor
     }
     
     var rotation: Double
@@ -23,14 +26,10 @@ struct Cardify: AnimatableModifier {
             let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
             if rotation < 90 {
                 shape.fill().foregroundColor(.white)
-//                let borderColor: Color = viewmodel.setBorderColor()
-                shape.stroke(lineWidth: DrawingConstants.lineWidth)
-                Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: 270-90)).padding(5).opacity(0.5)
-                
+                shape.stroke(bordColor, lineWidth: DrawingConstants.lineWidth)
             }else{
                 shape.fill()
             }
-           
                 content.opacity(rotation < 90  ? 1 : 0)
            
         }
@@ -38,12 +37,12 @@ struct Cardify: AnimatableModifier {
     }
     private struct DrawingConstants{
         static let cornerRadius: CGFloat = 20
-        static let lineWidth: CGFloat = 3
+        static let lineWidth: CGFloat = 5
     }
 }
 
 extension View{
-    func cardify(isFaceUp: Bool)-> some View{
-        self.modifier(Cardify(isFaceUp: isFaceUp))
+    func cardify(isFaceUp: Bool, bordColor: Color)-> some View{
+        self.modifier(Cardify(isFaceUp: isFaceUp, bordColor: bordColor))
     }
 }
