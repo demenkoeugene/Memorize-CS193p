@@ -48,13 +48,14 @@ class EmojiMemoryGame: ObservableObject{
     }
 
   
+   
     func setBorderColor() -> Color{
         return model.isMatched ? Color.green : setColor()
     }
     
     func newGame() {
         model = EmojiMemoryGame.createMemoryGame()
-        objectWillChange.send()
+//        objectWillChange.send()
     }
 
     func setTitle() -> String{
@@ -81,6 +82,9 @@ class EmojiMemoryGame: ObservableObject{
         model.choose(card)
     }
 
+    func shuffle(){
+        model.shuffle()
+    }
     
   
 
