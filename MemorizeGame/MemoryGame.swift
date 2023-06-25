@@ -23,7 +23,6 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
                 if cards[chosenIndex].content == cards[potentialMatchIndex].content{
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
-                   
                     score+=2 //+2 points to the score
                     isMatchedCard = true
                 }else {
@@ -43,7 +42,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
     }
     
     func index(of card: Card)-> Int?{
-        for index in 0..<cards.count{
+        for index in 0..<8{
             if cards[index].id == card.id{
                 return index
             }
@@ -97,7 +96,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
                 // before a certain amount of time passes during which the card is face up
                 
                 // can be zero which means "no bonus available" for this card
-                var bonusTimeLimit: TimeInterval = 6
+                var bonusTimeLimit: TimeInterval = 10
                 
                 // how long this card has ever been face up
                 private var faceUpTime: TimeInterval {
