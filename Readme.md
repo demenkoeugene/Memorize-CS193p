@@ -52,6 +52,11 @@ The goal of this assignment is to continue to recreate the demonstrations given 
 </div>
 add animation and a new "Shuffle" button. When the pictures are matched, the card frame shows the match as an identifier and is accompanied by an animation
 
+
+<br>
+<br>
+<br>
+<br>
 This project is built on Xcode 14.2 with the use of Swift 5.7 and SwiftUI 4
 
 My email: demenkoeugene@icloud.com
