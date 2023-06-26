@@ -47,10 +47,11 @@ The goal of this assignment is to continue to recreate the demonstrations given 
 </div>
    
 # MemorizeGame. Assignment III.
+add animation and a new "Shuffle" button. When the pictures are matched, the card frame shows the match as an identifier and is accompanied by an animation
+
 <div align="center">
      <img src = "MemorizeGame/2023-06-26 20.09.26.gif" width = "40%">
 </div>
-add animation and a new "Shuffle" button. When the pictures are matched, the card frame shows the match as an identifier and is accompanied by an animation
 
 
 <br>
