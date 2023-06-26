@@ -18,9 +18,9 @@ The goal of this assignment is to recreate the demonstration given in the first 
 
 Also I also did an Extra credit assignment.
 I made a random number of cards appear each time a theme button is chosen. Always shows at least 4 cards though. I created the randomaizer() function specifically for this purpose
-
-<img width="285" alt="214946374-84c678df-cdc0-4072-bed4-e48fe8523ab8" src="https://user-images.githubusercontent.com/110675494/220786122-24170ab5-400c-4cb3-be56-4bde1803be36.png">
-
+<div align="center">
+    <img width="285" alt="214946374-84c678df-cdc0-4072-bed4-e48fe8523ab8" src="https://user-images.githubusercontent.com/110675494/220786122-24170ab5-400c-4cb3-be56-4bde1803be36.png">
+</div>
 
 # MemorizeGame. Assignment II.
 
@@ -42,7 +42,11 @@ The goal of this assignment is to continue to recreate the demonstrations given 
     If you first flip 🐧 + 👻, then flip 🤖 + 🏀, then flip two 👻, your score will be 2 because you scored a match (and you will not receive any penalty for flipping 🐧, ✏, or 🏀 because they have not (yet) been involved in a match and 👻 have never been involved in a match). If you flip 🐧 + 🐼 again and then flip 🏀 + 🐧, your score will be reduced by 3 full points to -1 because this 🐧 card was already seen (during the first flip) and subsequently participated in two separate discrepancies (-1 point for each discrepancy), and the 🏀 card was a discrepancy after it was already seen (-1). If you flip the 🐧 + the other 🐧 that you finally found, you get 2 points for the match and go back to 1 total point.
 
 9. The score displayed in the interface
+![Запис екрана 2023-02-22 о 17 56 19](https://user-images.githubusercontent.com/110675494/220786090-722a1762-f0d4-46dd-93bf-7fdc07dcf529.gif)
 
+<div align="center">
+     <img src = "https://user-images.githubusercontent.com/110675494/220786090-722a1762-f0d4-46dd-93bf-7fdc07dcf529.gif" width = "40%">
+</div>
    
 # MemorizeGame. Assignment III.
 <div align="center">
@@ -54,8 +58,6 @@ This project is built on Xcode 14.2 with use Swift 5.7 and SwiftUI 4
 
 My email: demenkoeugene@icloud.com
 
-
-![Запис екрана 2023-02-22 о 17 56 19](https://user-images.githubusercontent.com/110675494/220786090-722a1762-f0d4-46dd-93bf-7fdc07dcf529.gif)
 
 
 
