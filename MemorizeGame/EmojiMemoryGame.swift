@@ -90,37 +90,7 @@ class EmojiMemoryGame: ObservableObject{
 }
 
 
-struct EmojiThemeRow: View {
-    let theme: Theme<Any>
-    let isEditing: Bool
-    let editTheme: ()->Void
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(theme.themeName)
-                    .font(.title)
-                    .foregroundColor(self.isEditing ? Color.primary : theme.colorCards as! Color)
-                
-                HStack {
-                    Text(" \(theme.themeArray.joined())")
-                        .truncationMode(.tail)
-                        .lineLimit(1)
-                }
-            }
-            Spacer()
-            
-            if self.isEditing {
-                Button(action: editTheme) {
-                    Image(systemName: "pencil.circle.fill")
-                        .imageScale(.large)
-                }
-                .buttonStyle(PlainButtonStyle())
-                .foregroundColor(theme.colorCards as? Color)
-            }
-        }
-    }
-}
+
 
 
 

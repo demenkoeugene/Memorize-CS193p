@@ -7,7 +7,7 @@
 
 import Foundation
 //Model
-
+import SwiftUI
 struct MemoryGame<CardContent> where CardContent: Equatable{
     private(set) var cards: Array<Card>
     var score: Int = 0 //our score
@@ -149,11 +149,11 @@ struct MemoryGame<CardContent> where CardContent: Equatable{
 
     
 //Struct for Theme 
-struct Theme<ColorType> {
+struct Theme {
     var themeName: String
     var themeArray: [String]
     var numberCards: Int
-    var colorCards: ColorType
+    var colorCards: Color
    
 }
 
