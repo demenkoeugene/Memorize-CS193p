@@ -7,10 +7,13 @@
 //Views
 import SwiftUI
 
+
 struct EmojiMemoryGameView: View {
-    @ObservedObject var game: EmojiMemoryGame
+//    @ObservedObject var game: EmojiMemoryGame
     @Namespace private var dealingNamespace
     
+    
+    @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
         
@@ -32,19 +35,19 @@ struct EmojiMemoryGameView: View {
                     NewGameButton
                     
                 }
-        }.foregroundColor(game.setColor()).padding(.horizontal)
+        }.foregroundColor(viewModel.theme.colorCards).padding(.horizontal)
     
     }
     
     var titleViewer: some View{
-        Text(game.setTitle())
+        Text(viewModel.theme.themeName)
             .font(.largeTitle)
             .fontWeight(.bold)
             .padding(10)
     }
     
     var scoreViewer: some View{
-        Text(game.setScore())
+        Text(viewModel.setScore())
             .font(.largeTitle)
             .fontWeight(.bold)
             .padding(10)
@@ -63,29 +66,29 @@ struct EmojiMemoryGameView: View {
     
     private func dealAnimation(for card: EmojiMemoryGame.Card) -> Animation {
            var delay = 0.0
-           if let index = game.cards.firstIndex(where: { $0.id == card.id }) {
-               delay = Double(index) * ( CardConstants.totalDealDuration / Double(game.cards.count))
+           if let index = viewModel.cards.firstIndex(where: { $0.id == card.id }) {
+               delay = Double(index) * ( CardConstants.totalDealDuration / Double(viewModel.cards.count))
            }
            return Animation.easeInOut(duration: CardConstants.dealDuration).delay(delay)
     }
     
     private func zIndex(of card: EmojiMemoryGame.Card) -> Double{
-        -Double(game.cards.firstIndex(where: {$0.id == card.id}) ?? 0)
+        -Double(viewModel.cards.firstIndex(where: {$0.id == card.id}) ?? 0)
     }
     
     var gameBody: some View {
-        AspectVGrid (items:game.cards,aspectRatio: 2/3){ card in
+        AspectVGrid (items:viewModel.cards,aspectRatio: 2/3){ card in
             if isUndealt(card)||(card.isMatched && !card.isFaceUp){
                 Color.clear
             } else {
-                CardView(card, game)
+                CardView(card, viewModel)
                     .matchedGeometryEffect(id: card.id, in: dealingNamespace)
                     .padding(4)
                     .transition(AnyTransition.asymmetric(insertion: .identity, removal: .scale))
                     .zIndex(zIndex(of: card))
                     .onTapGesture {
                         withAnimation  {
-                            game.choose(card)
+                            viewModel.choose(card)
                         }
                     }
             }
@@ -94,17 +97,17 @@ struct EmojiMemoryGameView: View {
     
     var deckBody: some View {
           ZStack {
-              ForEach(game.cards.filter(isUndealt)) { card in
-                  CardView(card, game)
+              ForEach(viewModel.cards.filter(isUndealt)) { card in
+                  CardView(card, viewModel)
                       .matchedGeometryEffect(id: card.id, in: dealingNamespace).transition(AnyTransition
                               .asymmetric(insertion: .opacity, removal: .identity))
               }
           }
           .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
-          .foregroundColor(game.setColor())
+          .foregroundColor(viewModel.theme.colorCards)
           .onTapGesture {
               // "deal" cards
-              for card in game.cards {
+              for card in viewModel.cards {
               withAnimation(dealAnimation(for: card)) {
                       deal(card)
                   }
@@ -115,10 +118,10 @@ struct EmojiMemoryGameView: View {
     var shuffle: some View{
         Button("Shuffle"){
             withAnimation(.easeInOut(duration: 0.5)){
-                game.shuffle()
+                viewModel.shuffle()
             }
             
-        }.font(.title2.bold()).foregroundColor(game.setColor())
+        }.font(.title2.bold()).foregroundColor(viewModel.theme.colorCards)
             .padding(.horizontal, 50.0).padding(.vertical, 20.0)
             .background(Color.white)
             .cornerRadius(20)
@@ -129,11 +132,11 @@ struct EmojiMemoryGameView: View {
     var NewGameButton: some View {
         Button {
             dealt = []
-            game.newGame()
+            viewModel.newGame()
         } label: {
             VStack() {
                 Text("New")
-                    .font(.title2.bold()).foregroundColor(game.setColor())
+                    .font(.title2.bold()).foregroundColor(viewModel.theme.colorCards)
                         .padding(.horizontal, 60.0).padding(.vertical, 20.0)
                         .background(Color.white)
                         .cornerRadius(20)
@@ -219,10 +222,11 @@ struct CardView: View{
 }
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        let game = EmojiMemoryGame()
-        game.choose(game.cards.first!)
-        return EmojiMemoryGameView(game: game)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        @StateObject var game = EmojiMemoryGame(theme: EmojiMemoryGame.randomCase)
+//           
+//        game.choose(game.cards.first!)
+//        return EmojiMemoryGameView(game: game)
+//    }
+//}

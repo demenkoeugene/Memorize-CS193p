@@ -9,11 +9,13 @@ import SwiftUI
 
 @main
 struct Memorize_CS193P_App: App {
-    private let game = EmojiMemoryGame()
+    @StateObject var store = MemoryStore()
     
     var body: some Scene {
         WindowGroup {
-            EmojiMemoryGameView(game: game)
+            ThemeChooser()
+                .environmentObject(store)
         }
     }
 }
+
