@@ -26,13 +26,20 @@ struct ThemeChooser: View {
                         NavigationLink(destination: EmojiMemoryGameView(viewModel: EmojiMemoryGame(theme: theme))) {
                             Color.clear
                         }
-                        .opacity(self.editMode.isEditing ? 0 : 1)
+                        .opacity(0.0)
+//                        .opacity(self.editMode.isEditing ? 0 : 1)
+                        .buttonStyle(PlainButtonStyle())
                     }
+                    .background(theme.colorCards)
                 }
+                
                 .onDelete { indexSet in
                     self.store.themes.remove(atOffsets: indexSet)
                 }
+                .listRowInsets(EdgeInsets())
+                
             }
+            
             .sheet(item: self.$editingTheme, content: { theme in
                 EmptyView()
 //                EmojiMemoryThemeEditor(theme: theme)
@@ -59,13 +66,14 @@ struct EmojiThemeRow: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(theme.themeName)
-                    .font(.title)
-                    
-
-                HStack {
-                    Text("\(theme.numberCards == theme.themeArray.count ? "All" : "\(theme.numberCards)") of \(theme.themeArray.joined())")
+                    .font(.headline)
+                    .padding(.bottom, 10)
+                HStack(spacing: 70) {
+                    Text("\(Image(systemName: "rectangle.on.rectangle")) \(theme.numberCards)")
                         .truncationMode(.tail)
+                    Text("Emoji: \(theme.themeArray.joined())")
                         .lineLimit(1)
+
                 }
             }
             Spacer()
@@ -78,6 +86,8 @@ struct EmojiThemeRow: View {
                 .buttonStyle(PlainButtonStyle())
             }
         }
+        .padding(20)
+        
     }
 }
 

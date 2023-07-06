@@ -9,25 +9,25 @@ import SwiftUI
 
 
 struct EmojiMemoryGameView: View {
-//    @ObservedObject var game: EmojiMemoryGame
     @Namespace private var dealingNamespace
-    
-    
     @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
         
         VStack{
-            HStack{
-                titleViewer
-                Spacer()
-                scoreViewer
-            }
+            VStack{
+                HStack{
+                    titleViewer
+                    Spacer()
+                    scoreViewer
+                }
                 
-            ZStack(alignment: .bottom){
-                gameBody
-                deckBody
+                ZStack(alignment: .bottom){
+                    gameBody
+                    deckBody
+                }
             }
+            .offset(y: -50)
                 Spacer()
                 HStack{
                     shuffle
@@ -36,6 +36,7 @@ struct EmojiMemoryGameView: View {
                     
                 }
         }.foregroundColor(viewModel.theme.colorCards).padding(.horizontal)
+        
     
     }
     

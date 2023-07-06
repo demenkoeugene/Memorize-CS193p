@@ -68,12 +68,12 @@ struct Theme: Codable, Identifiable {
   
    
     static var themes: [Theme] = [
-        Theme(themeName: "Vehicles", themeArray: vehiclesArray, numberCards: generateRandomNumber(), colorCards: .blue),
-        Theme(themeName: "Animal", themeArray: animalArray, numberCards: generateRandomNumber(), colorCards: .orange),
-        Theme(themeName: "Food", themeArray: foodArray, numberCards: generateRandomNumber(), colorCards: .cyan),
-        Theme(themeName: "Active", themeArray: activeArray, numberCards: generateRandomNumber(), colorCards: .indigo),
-        Theme(themeName: "Sports", themeArray: sportsArray, numberCards: generateRandomNumber(), colorCards: .purple),
-        Theme(themeName: "Face", themeArray: faceArray, numberCards: generateRandomNumber(), colorCards: .mint)
+        Theme(themeName: "Vehicles", themeArray: vehiclesArray, numberCards: generateRandomNumber(), colorCards: Color(hex: "#759DD1")!),
+        Theme(themeName: "Animal", themeArray: animalArray, numberCards: generateRandomNumber(), colorCards: Color(hex: "#D5CD81")!),
+        Theme(themeName: "Food", themeArray: foodArray, numberCards: generateRandomNumber(), colorCards: Color(hex: "#A4A3E0")!),
+        Theme(themeName: "Active", themeArray: activeArray, numberCards: generateRandomNumber(), colorCards: Color(hex: "#D47D80")!),
+        Theme(themeName: "Sports", themeArray: sportsArray, numberCards: generateRandomNumber(), colorCards: Color(hex: "#E0D6A3")!),
+        Theme(themeName: "Face", themeArray: faceArray, numberCards: generateRandomNumber(), colorCards: Color(hex: "#A3D7E0")!)
     ]
     
     static func generateRandomNumber() -> Int {
