@@ -5,21 +5,19 @@ This is my educational project for the ***Spring 2021 version of Stanford Univer
 
 The goal of this assignment is to recreate the demonstration given in the first two lectures and then make some small enhancements.
 
-# MemorizeGame. Assignment I.
-**Required Tasks**
-1. I have implemented a game called "Memorize" that works as shown in lectures 1 and 2. Enter all the codes. 
-2. I added the caption "Memorize!" to the top of the screen.
-3. Add at least 3 "Select Theme" buttons to the interface, each of which will replace all cards with new ones containing emojis that match the selected theme.
-4. The number of cards in each of the 3 themes is different but in no case less than 8.
-5. The cards that appear when you click the theme button are in an unpredictable (i.e. random) order.
-6. The topic buttons contain an image representing the topic and text describing the topic, arranged vertically above each other.
-7. The image of the topic buttons should be created using the SF symbol associated with the topic that is selected (e.g., the car symbol and the topic "Vehicles" as shown in the "Screenshots" section below).
-8. The text description of the topic selection buttons is written in a noticeably smaller font than the font chosen for the emoji on the cards.
+# MemorizeGame. Assignment VI.
+add animation and a new "Shuffle" button. When the pictures are matched, the card frame shows the match as an identifier and is accompanied by an animation
 
-Also, I also did an Extra credit assignment.
-I made a random number of cards appear each time a theme button is chosen. It always shows at least 4 cards though. I created the randomizer() function specifically for this purpose
 <div align="center">
-    <img width="285" alt="214946374-84c678df-cdc0-4072-bed4-e48fe8523ab8" src="https://user-images.githubusercontent.com/110675494/220786122-24170ab5-400c-4cb3-be56-4bde1803be36.png">
+     <img src = "MemorizeGame/2023-06-26 20.09.26.gif" width = "40%">
+</div>
+
+
+   
+# MemorizeGame. Assignment III.
+
+<div align="center">
+     <img src = "2023-07-09 19.43.10.gif" width = "40%">
 </div>
 
 # MemorizeGame. Assignment II.
@@ -45,12 +43,22 @@ The goal of this assignment is to continue to recreate the demonstrations given 
 <div align="center">
      <img src = "https://user-images.githubusercontent.com/110675494/220786090-722a1762-f0d4-46dd-93bf-7fdc07dcf529.gif" width = "60%">
 </div>
-   
-# MemorizeGame. Assignment III.
-add animation and a new "Shuffle" button. When the pictures are matched, the card frame shows the match as an identifier and is accompanied by an animation
 
+# MemorizeGame. Assignment I.
+**Required Tasks**
+1. I have implemented a game called "Memorize" that works as shown in lectures 1 and 2. Enter all the codes. 
+2. I added the caption "Memorize!" to the top of the screen.
+3. Add at least 3 "Select Theme" buttons to the interface, each of which will replace all cards with new ones containing emojis that match the selected theme.
+4. The number of cards in each of the 3 themes is different but in no case less than 8.
+5. The cards that appear when you click the theme button are in an unpredictable (i.e. random) order.
+6. The topic buttons contain an image representing the topic and text describing the topic, arranged vertically above each other.
+7. The image of the topic buttons should be created using the SF symbol associated with the topic that is selected (e.g., the car symbol and the topic "Vehicles" as shown in the "Screenshots" section below).
+8. The text description of the topic selection buttons is written in a noticeably smaller font than the font chosen for the emoji on the cards.
+
+Also, I also did an Extra credit assignment.
+I made a random number of cards appear each time a theme button is chosen. It always shows at least 4 cards though. I created the randomizer() function specifically for this purpose
 <div align="center">
-     <img src = "MemorizeGame/2023-06-26 20.09.26.gif" width = "40%">
+    <img width="285" alt="214946374-84c678df-cdc0-4072-bed4-e48fe8523ab8" src="https://user-images.githubusercontent.com/110675494/220786122-24170ab5-400c-4cb3-be56-4bde1803be36.png">
 </div>
 
 
