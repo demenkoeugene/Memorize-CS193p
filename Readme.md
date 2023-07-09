@@ -6,7 +6,6 @@ This is my educational project for the ***Spring 2021 version of Stanford Univer
 The goal of this assignment is to recreate the demonstration given in the first two lectures and then make some small enhancements.
 
 # MemorizeGame. Assignment VI. Memorize Themes
-<hr>
 
 **Completed tasks**
 1. My game from A2 should no longer select a random theme, but instead, its ViewModel should have a theme var variable that can be set.
@@ -40,7 +39,6 @@ Below is a list of the concepts I practiced within this assignment.
 
    
 # MemorizeGame. Assignment III.
-<hr>
 add animation and a new "Shuffle" button. When the pictures are matched, the card frame shows the match as an identifier and is accompanied by an animation
 
 <div align="center">
@@ -50,7 +48,6 @@ add animation and a new "Shuffle" button. When the pictures are matched, the car
 
 
 # MemorizeGame. Assignment II.
-<hr>
 
 The goal of this assignment is to continue to recreate the demonstrations given in the first four lectures and then make some bigger enhancements. 
 **MVVM** was used to improve the previous project.
@@ -75,7 +72,6 @@ The goal of this assignment is to continue to recreate the demonstrations given 
 </div>
 
 # MemorizeGame. Assignment I.
-<hr>
 
 **Completed tasks**
 1. I have implemented a game called "Memorize" that works as shown in lectures 1 and 2. Enter all the codes. 
