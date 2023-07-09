@@ -22,15 +22,13 @@ struct ThemeChooser: View {
                             self.editingTheme = theme
                         }
 
-                        // An empty NavigationLink so that the "navigation chevron" can be hidden, but still the same "row content" is shown
                         NavigationLink(destination: EmojiMemoryGameView(viewModel: EmojiMemoryGame(theme: theme))) {
                             Color.clear
                         }
                         .opacity(0.0)
-//                        .opacity(self.editMode.isEditing ? 0 : 1)
                         .buttonStyle(PlainButtonStyle())
                     }
-                    .background(theme.colorCards)
+                    .listRowBackground(theme.colorCards)
                 }
                 
                 .onDelete { indexSet in
@@ -39,11 +37,10 @@ struct ThemeChooser: View {
                 .listRowInsets(EdgeInsets())
                 
             }
-            
             .sheet(item: self.$editingTheme, content: { theme in
                 EmptyView()
-//                EmojiMemoryThemeEditor(theme: theme)
-//                    .environmentObject(self.store)
+                MemoryEdit(theme: theme)
+                    .environmentObject(self.store)
             })
             .navigationBarTitle("Memorize")
             .navigationBarItems(
@@ -80,7 +77,7 @@ struct EmojiThemeRow: View {
 
             if self.isEditing {
                 Button(action: editTheme) {
-                    Image(systemName: "pencil.circle.fill")
+                    Image(systemName: "pencil")
                         .imageScale(.large)
                 }
                 .buttonStyle(PlainButtonStyle())

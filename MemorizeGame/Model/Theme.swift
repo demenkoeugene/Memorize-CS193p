@@ -5,7 +5,7 @@
 //  Created by Eugene Demenko on 05.07.2023.
 //
 
-import UIKit
+
 import Foundation
 import SwiftUI
 
@@ -80,7 +80,10 @@ struct Theme: Codable, Identifiable {
         return Int.random(in: 4...12)
     }
     
-    static let template = Theme(themeName: "Untitled", themeArray: ["😃", "👍🏻", "🌈", "❤️"], numberCards: 4, colorCards: .gray)
+    static let template = Theme(themeName: "Untitled",
+                                themeArray: ["🤹‍♀️", "🎤", "🎲", "🏨"],
+                                numberCards: 6,
+                                colorCards: .gray)
 }
 
 

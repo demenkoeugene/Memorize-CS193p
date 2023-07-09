@@ -15,7 +15,7 @@ class MemoryStore: ObservableObject {
     @Published var themes: [Theme]
 
     init() {
-        let defaultsKey = "EmojiMemoryThemeStore"
+        let defaultsKey = "MemoryThemeStore"
         themes = (UserDefaults.standard.object(forKey: defaultsKey) as? [Data])?
             .compactMap({ Theme(json: $0) }) ?? Theme.themes
         autosave = $themes.sink { themes in

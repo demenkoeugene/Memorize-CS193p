@@ -22,10 +22,12 @@ class EmojiMemoryGame: ObservableObject{
         init(theme: Theme? = nil) {
             self.theme = theme ?? Theme.themes.randomElement()!
             let emoji = self.theme.themeArray.shuffled()
-            model = MemoryGame(numberOfPairsOfCards: self.theme.numberCards) {
-                emoji[$0]
-            }
-       }
+            let numberOfPairs = min(self.theme.numberCards, emoji.count)
+            model = MemoryGame(numberOfPairsOfCards: numberOfPairs) { pairIndex in
+                emoji[pairIndex]
+        }
+    }
+
 
     
    
