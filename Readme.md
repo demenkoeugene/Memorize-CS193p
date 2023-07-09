@@ -3,7 +3,6 @@
 Hello! I'm Eugene.
 This is my educational project for the ***Spring 2021 version of Stanford University's course CS193p***.
 
-The goal of this assignment is to recreate the demonstration given in the first two lectures and then make some small enhancements.
 
 # MemorizeGame. Assignment VI. Memorize Themes
 
